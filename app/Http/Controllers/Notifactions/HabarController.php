@@ -16,4 +16,19 @@ class HabarController extends Controller
 
         return response()->json(Message::collection($notifications)); 
     }
+    public function show($id)
+    {
+        $notifications = DatabaseNotification::find($id);
+
+        return response()->json($notifications);
+    }
+
+    public function delete($id)
+    {
+        $notifications = DatabaseNotification::find($id);
+
+        $notifications->delete();
+
+        return response()->json(['message' => 'ochirildi']);
+    }
 }
